@@ -8,7 +8,7 @@ ARG HTTP_PROXY=http://192.168.1.177:7890
 ARG HTTPS_PROXY=http://192.168.1.177:7890
 
 # WARNING: This token should be temporary and revoked immediately after build
-ENV GITHUB_TOKEN="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"
+ENV GITHUB_TOKEN="user_token"
 
 # Set proxy environment variables
 ENV HTTP_PROXY=${HTTP_PROXY}
