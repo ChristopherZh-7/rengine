@@ -1,12 +1,24 @@
+
 # Base image
 FROM ubuntu:22.04
 
 ARG GECKOVERSION=0.33.0
-ARG GOVERSION=1.21.5
+ARG GOVERSION=1.23.2
+ARG HTTP_PROXY=http://192.168.1.177:7890
+ARG HTTPS_PROXY=http://192.168.1.177:7890
+
+# WARNING: This token should be temporary and revoked immediately after build
+ENV GITHUB_TOKEN="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"
+
+# Set proxy environment variables
+ENV HTTP_PROXY=${HTTP_PROXY}
+ENV HTTPS_PROXY=${HTTPS_PROXY}
+ENV http_proxy=${HTTP_PROXY}
+ENV https_proxy=${HTTPS_PROXY}
 
 RUN ARCH=$(dpkg --print-architecture) \ 
-    && if [ "${ARCH}" ! "arm64" ] || [ "${ARCH}" ! "amd64" ]; then \
-      echo "reNgine not supported, encountered unknown architecture: ${TARGETPLATFORM}" \
+    && if [ "${ARCH}" != "arm64" ] && [ "${ARCH}" != "amd64" ]; then \
+      echo "reNgine not supported, encountered unknown architecture: ${ARCH}" \
       && exit 1; \
     fi
 
@@ -51,12 +63,13 @@ RUN apt install -y --no-install-recommends \
     wget \
     curl \
     python3-netaddr \
+    unzip \
     software-properties-common
 
 RUN add-apt-repository ppa:mozillateam/ppa
 
 RUN ARCH=$(dpkg --print-architecture) \ 
-    && curl -L https://go.dev/dl/go${GOVERSION}.linux-${ARCH}.tar.gz | tar -xzC /usr/local
+    && curl -x ${HTTP_PROXY} -L https://go.dev/dl/go${GOVERSION}.linux-${ARCH}.tar.gz | tar -xzC /usr/local
 
 RUN ARCH=$(dpkg --print-architecture) \ 
     && if [ "${ARCH}" = "arm64" ]; then \
@@ -64,13 +77,13 @@ RUN ARCH=$(dpkg --print-architecture) \
     elif [ "${ARCH}" = "amd64" ]; then \
       GECKOPATH="geckodriver-v${GECKOVERSION}-linux64.tar.gz"; \
     fi \
-    && wget https://github.com/mozilla/geckodriver/releases/download/v${GECKOVERSION}/${GECKOPATH} \
+    && wget -e use_proxy=yes -e http_proxy=${HTTP_PROXY} https://github.com/mozilla/geckodriver/releases/download/v${GECKOVERSION}/${GECKOPATH} \
     && tar -xvf ${GECKOPATH} \
     && rm ${GECKOPATH} \
     && mv geckodriver /usr/bin
 
 # Install Rust for orjson
-RUN set -e; curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN curl -x ${HTTP_PROXY} --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN pip3 install maturin
 
@@ -100,7 +113,6 @@ RUN printf "\
     xargs -L1 go install -ldflags="-s -w" -v && \
     rm -rf /go/pkg/* && rm -rf /root/.cache/go-build
 
-
 # Update Nuclei and Nuclei-Templates
 RUN nuclei -update-templates
 
@@ -121,3 +133,25 @@ RUN pip3 install --no-cache-dir fuzzywuzzy \
 
 # Copy source code
 COPY . /usr/src/app/
+
+# Clear proxy settings
+ENV HTTP_PROXY=
+ENV HTTPS_PROXY=
+ENV http_proxy=
+ENV https_proxy=
+
+
+
+
+# 安装和初始化xray
+RUN XRAY_VERSION=1.9.11 \
+    && XRAY_URL="https://github.com/chaitin/xray/releases/download/${XRAY_VERSION}/xray_linux_amd64.zip" \
+    && echo "Downloading xray from ${XRAY_URL}" \
+    && curl -x http://192.168.1.177:7890 -L --retry 3 --retry-delay 5 -o /tmp/xray.zip "${XRAY_URL}" \
+    && mkdir -p /usr/local/xray \
+    && unzip -o /tmp/xray.zip -d /usr/local/xray \
+    && rm /tmp/xray.zip \
+    && chmod +x /usr/local/xray/xray_linux_amd64
+
+# 将xray添加到PATH
+ENV PATH="/usr/local/xray:${PATH}"
