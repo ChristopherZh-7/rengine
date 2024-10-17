@@ -108,6 +108,8 @@ services:
       - static_volume:/usr/src/app/staticfiles/
     ports:
       - "127.0.0.1:8000:8000"
+      - "0.0.0.0:17777:5678"  # 外部 17777 映射到容器内部 5678
+
     depends_on:
       - db
       - celery

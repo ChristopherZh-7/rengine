@@ -2,7 +2,12 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import pydevd_pycharm
 
+try:
+    pydevd_pycharm.settrace('192.168.1.102', port=17777, stdoutToServer=True, stderrToServer=True, suspend=False, trace_only_current_thread=False)
+except:
+    print("Unable to connect to the remote debugger. Continuing without debugging.")
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'reNgine.settings')

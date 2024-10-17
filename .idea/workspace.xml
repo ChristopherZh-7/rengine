@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eeb0ab82-afc4-400c-a1d1-c5a54c84b63b" name="Changes" comment="Merge pull request #1432 from yogeshojha/hotfix/2.2.0_release&#10;&#10;2.2.0 Hotfix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/web/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/beat-entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/web/beat-entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/web/entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/manage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,22 +52,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu-24.04/root/rengine",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "http.proxy",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python Debug Server.rengine Remote Debug.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu-24.04/root/rengine&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Python Debug Server.rengine Remote Debug">
+    <configuration name="rengine Remote Debug" type="PyRemoteDebugConfigurationType" factoryName="Python Remote Debug" singleton="false">
+      <module name="rengine" />
+      <option name="PORT" value="17777" />
+      <option name="HOST" value="0.0.0.0" />
+      <PathMappingSettings>
+        <option name="pathMappings">
+          <list>
+            <mapping local-root="$PROJECT_DIR$/web" remote-root="/usr/src/app" />
+          </list>
+        </option>
+      </PathMappingSettings>
+      <option name="REDIRECT_OUTPUT" value="true" />
+      <option name="SUSPEND_AFTER_CONNECT" value="true" />
+      <method v="2" />
+    </configuration>
     <configuration name="rengine" type="Python.DjangoServer" factoryName="Django server">
       <module name="rengine" />
       <option name="ENV_FILES" value="" />
@@ -76,6 +93,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (rengine-master)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -91,6 +109,10 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django Server.rengine" />
+      <item itemvalue="Python Debug Server.rengine Remote Debug" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -109,7 +131,9 @@
       <option name="presentableId" value="Default" />
       <updated>1729059914595</updated>
       <workItem from="1729059915700" duration="1204000" />
-      <workItem from="1729061191129" duration="500000" />
+      <workItem from="1729061191129" duration="2549000" />
+      <workItem from="1729063905950" duration="4773000" />
+      <workItem from="1729068740013" duration="7605000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #1432 from yogeshojha/hotfix/2.2.0_release&#10;&#10;2.2.0 Hotfix">
       <option name="closed" value="true" />
@@ -151,7 +175,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729060379698</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge pull request #1432 from yogeshojha/hotfix/2.2.0_release&#10;&#10;2.2.0 Hotfix">
+      <option name="closed" value="true" />
+      <created>1729061728698</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729061728699</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge pull request #1432 from yogeshojha/hotfix/2.2.0_release&#10;&#10;2.2.0 Hotfix">
+      <option name="closed" value="true" />
+      <created>1729061822787</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729061822787</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,5 +200,56 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge pull request #1432 from yogeshojha/hotfix/2.2.0_release&#10;&#10;2.2.0 Hotfix" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge pull request #1432 from yogeshojha/hotfix/2.2.0_release&#10;&#10;2.2.0 Hotfix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/reNgine/tasks.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/reNgine/tasks.py</url>
+          <line>316</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/reNgine/tasks.py</url>
+          <line>398</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/reNgine/tasks.py</url>
+          <line>548</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/reNgine/tasks.py</url>
+          <line>568</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/reNgine/tasks.py</url>
+          <line>610</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/reNgine/tasks.py</url>
+          <line>632</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/dashboard/urls.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web/manage.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

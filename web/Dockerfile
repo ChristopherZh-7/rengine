@@ -123,6 +123,7 @@ RUN chaos -update
 COPY ./requirements.txt /tmp/requirements.txt
 RUN pip3 install --upgrade setuptools==72.1.0
 RUN pip3 install -r /tmp/requirements.txt --no-cache-dir
+RUN pip install pydevd-pycharm==241.18034.82
 
 # install eyewitness
 RUN pip3 install --no-cache-dir fuzzywuzzy \
